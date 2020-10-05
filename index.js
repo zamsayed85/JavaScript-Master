@@ -1,180 +1,217 @@
-console.log({})
-    //{} is an Object
+/**
+ * Practice Set 1 : Simple Function Creation
+ */
+console.log("Practice Set 1 : Simple Function Creation")
+
+function mySimpleFunction() {}
+console.log(mySimpleFunction)
+mySimpleFunction() //Nothing is done as there are no statements in the funciton body.
+const functionResult = mySimpleFunction()
+console.log(functionResult) //Undefined
+console.log(mySimpleFunction()) //Undefined
+console.log(mySimpleFunction(4, 5)) //Undefined - you are able to call a function with arguments even if there are no parameters in the function.
 
 
-const myCity = {
-    city: "New york",
-    country: "USA"
+/**
+ * Practice Set 2 : Simple Function Creation with Function body and return statement
+ */
+console.log("Practice Set 2 : Simple Function Creation with Function body")
+
+function myFn(a, b) {
+    let c
+    a = a + 1
+    c = a + b
+    return c
 }
 
+console.dir(myFn)
+console.log(myFn(1, 2))
 
-//Object Modification
-//dot notation to access the value or change value of property
+console.log(myFn.name)
+console.log(myFn.length)
 
-console.log(myCity.city)
-myCity.city = "New Jersey"
-console.log(myCity.city)
 
-//adding properties to existing object using same dot notation
-myCity.popular = true
-console.log(myCity)
 
-//adding properties to existing object using same dot notation
-myCity["population"] = 102423424
-
-//difference between . and [] notation
 /**
+ * Practice Set 3 :Parameters of the function
+ */
+console.log("Practice Set 3 :Parameters of the function")
+
+function myFunc(a, b) {
+    console.log(a)
+    console.log(b)
+}
+
+myFunc()
+myFunc(10, 5)
+myFunc("abc")
+
+// in all cases the function returns undefined -its not printed on the console as we are not assigning to any variable and printing that variable.
+
+/**
+ * Practise 4 : Function Scope, reuse parameters
+ */
+console.log("Practise 4 : Function Scope, reuse parameters")
+
+function myFunScope(a, b) {
+    //Function scope of parameter a and b
+    console.log(a, b)
+}
+
+//showing you can reuse the parameters
+function myFunReuseab(a, b) {
+    console.log(a, b)
+}
+
+//same parameter names used as variables
+//Global Scope
+const a = true
+const b = null
+
+myFunScope(1, 2)
+myFunReuseab("Zameer", "Rocks")
+
+console.log(a, b)
+
+
+
+//console.log(a)
+//index.js:60 Uncaught ReferenceError: a is not defined
+
+
+//IMPORTANT : undefined + undefined =NaN
+console.log(undefined + undefined)
+
+
+/**
+ * Practice Set 5 : What happens after return
+ */
+
+function myFuncReturn(a) {
+    console.log(a)
+    return a //function stops here
+    console.log(a)
+}
+
+console.log(myFuncReturn(true))
+
+
+
+/**
+ * Excercise 1: Create function called mult should have 3 parameters
+ * 2. create new variable and assign to it result of multiplication of all 3 parameters
+ * 3. print to the console result
+ * 4. funciton will not return anything
+ */
+
+console.log("Excercise 1")
+
+function mult(a, b, c) {
+    const result = a * b * c //rember if const is used assigment should be done at the same time
+    console.log(result)
+}
+mult(3, 4, 5)
+console.log(mult(3, 4, 5))
+mult(3, 4, "aba") //Nan
+mult() //NaN
+
+/**
+ * Excercise 2: Create a function concatStrings with 2 parameters
+ * 2. return the concatenated String
+ */
+console.log("Excercise 2")
+
+function concatStrings(Str1, Str2) {
+    const result = Str1 + " " + Str2
+    return result
+}
+
+console.log(concatStrings("Zameer", "Sayed"))
+
+/**
+ * Excercise 3 : Create two function and one will be placed inside the other
+ * 1. Create function "outerFunction" with 2 parameters
+ * 2. create function inside of outerFunction named "innerFunction" with 1 parameter
+ * 3. innerFunction will return square of parameter
+ * 4. In the outerFunction sum both parameter
+ * 5. Call "innerFunction with argument that is equal to sum of both parameters 
+ * of the "outerFunction"
+ * 6. Log to the console result of the "innerFunction"
  * 
  */
 
-const countryPropertyName = "state"
-myCity[countryPropertyName] = "NY"
+function outerFunction(a, b) {
+    const sum = a + b
+    const result = innerFunction(sum)
+    console.log(result)
 
-
-console.log(myCity)
-
-//rempoving property from existing object using delete
-//delete is an operator. 
-
-delete myCity.country
-console.log(myCity)
-
-
-//. first choice
-// if . not possible use [] when property names are stored in other variable[]
-
-
-
-//Nested Objects
-const myNewCity = {
-    city: "New York",
-    info: {
-        popular: true,
-        country: "USA",
-    }
-}
-console.log("myNewCity")
-console.log(myNewCity)
-
-console.log(myNewCity.info.popular)
-
-console.log(myNewCity.info["popular"])
-
-//Multiple rows withing same objects
-
-
-/**
- * Exercice 1 
- * 1. Create variable called myPost
- * 2. Initial value should be empty object
- * 3. Add Property called "postTitle" and value "Object is reference type"
- * 4. Add one more property "postLikes" with value 0
- * 5. Add third property "shared" and set its value to false
- * 6. Increase value of the "postLikes" by 1
- * 7. Delete propety "Shared"
- */
-
-const myPost = {}
-myPost.postTitle = "Object is reference Type"
-myPost.postLikes = 0
-myPost.shared = false
-myPost.postLikes++;
-delete myPost.shared
-
-console.log(myPost)
-
-
-/**
- * Excercise 2
- * 1. Use Const for object declararion
- * 2. Modify the value of object
- */
-
-const myObject2 = {}
-myObject2.a = true
-console.log(myObject2)
-
-// myObject2 = {
-//         a: true
-//     } //index.js:97 Uncaught TypeError: Assignment to constant variable.
-
-// you cannot change object varaible myObject2 as a whole.
-//but with const you can mutate the properties.
-
-
-
-/**
- * Excercise 3
- * 1. Create Variable called myObject3
- * 2. Add property a with value 10
- * 3. create another variable copyofmyObject3
- * 5. its value should be myObject3
- * 6. Add new property "b" with value false to the "copyOfMyObect"
- */
-
-
-let myObject3 = { a: 10 }
-console.log(myObject3)
-
-let copyOfMyObect = myObject3
-copyOfMyObect.b = false
-console.log(copyOfMyObect)
-console.log(myObject3)
-
-
-//pointer to the same obect in memory
-
-//What happens when you try to execute non-existing property of an Object
-
-
-console.log(myObject3.c) //undefined - Code execution is not stopped
-
-//code execution is stopped
-// console.log(v) //error when accessing non declared vaariable
-//     //Uncaught ReferenceError: v is not defined
-
-myObject3.newProperty = undefined
-    //dont use value as "undefined"  - IMPORTANT - this will unable us to indentify
-    //property exits in object or not use "null" instead
-
-console.log(myObject3)
-console.log(myObject3.myNewCity)
-
-/**
- * Exercise 4
- * 1. Create Obect - ObectwithNestedObject with initial value {}
- * 2. Add property "nestedObject" with initial value {}
- * 3. Add property "a" with value "null" to "nestedObject". Use dot notation
- * 4. Add property "b" with value true to "nestedObject". Use bracket notation
- * Create new variable with property name
- */
-
-console.log("Exercise 4")
-const objectWithNestedObject = {}
-objectWithNestedObject.nestedObject = {}
-
-objectWithNestedObject.nestedObject.a = null
-
-const newPropertyName = "b"
-
-objectWithNestedObject.nestedObject[newPropertyName] = true
-
-console.log(objectWithNestedObject)
-
-
-
-/***********METHOD**************/
-//properties with function as a property value
-
-const myCityNew = {
-    city: "New York",
-    cityGreeting: function() {
-        console.log("Greetings!!")
+    function innerFunction(a) {
+        return a * a
     }
 }
 
-console.log(myCityNew)
-console.log(myCityNew.cityGreeting)
+outerFunction(2, 5)
 
-//Calling the method or function from the object.
-myCityNew.cityGreeting();
+
+/**
+ * Practise Set 5 : Anonymous Functions
+ *
+ */
+
+//Function Expression - No Names, cannot be used standalone.
+//Common Usage - passed as argument in the call to the other function
+
+
+const myFuncVariable = function(a, b) {
+        return a + b
+    }
+    //myFuncVariabe is just a variable that holds function expression as value.
+
+myFuncVariable(5, 4)
+
+
+
+const myAnonymousFuncVariable = function() {}
+console.log(myAnonymousFuncVariable)
+
+
+/**
+ * Practice Set 6 : Callback Function
+ */
+
+setTimeout(function() {
+        console.log("Delayed message displayed after 1sec")
+    }, 1000) //millisecons - 1000 is 1 secs
+
+setTimeout(function myFName() {
+        console.log("Delayed message displayed after 1sec")
+    }, 1000) //you can pass named function but doesnt make sense as its not available in the outer scope.
+
+//SetInterval // is one of the method of global window object same as setTimeout
+let i = 1
+setInterval(function() {
+    //console.log("Message logged after every 1 sec" + i++, 100000)
+})
+
+/**
+ * Excercise 4: Function Expression - Using SetTimeout, SetInterval, ClearInterval
+ * Print Only 5 Messages with interval 2 seconds
+ *  "Here is message number 1"
+ *  "Here is message number 2"
+ *  "Here is message number 3"
+ *  "Here is message number 4"
+ *  "Here is message number 4"
+ */
+
+let y = 1
+const myInterval = setInterval(function() {
+    console.log("Here is message number" + y)
+    y++
+}, 2000)
+
+console.log("My Interval")
+console.log(myInterval)
+
+setTimeout(function() {
+    clearInterval(myInterval)
+}, 10000)
